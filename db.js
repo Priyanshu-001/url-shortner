@@ -3,7 +3,7 @@ pg=require('pg')
 const { Pool, Client } = require('pg')
 console.log('pool welcomses ')
 
-const connectionString =  process.env.DATABASE_URI
+const connectionString =  process.env.DATABASE_URL
 pg.defaults.ssl = true;
 const pool = new Pool({
 connectionString,
