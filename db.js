@@ -33,7 +33,7 @@ checkIfSiteExists = async (site)=> {
 getTopSites = async()=>
 {
 	return new Promise((resolve, reject)=>{
-		pool.query('SELECT Hits,link from sites ORDER BY Hits DESC')
+		pool.query('SELECT Hits,link from sites ORDER BY Hits DESC LIMIT 5')
 		.then(result=>{
 			resolve(result.rows)
 		})
