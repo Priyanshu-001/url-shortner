@@ -5,7 +5,7 @@ require('dotenv').config()
 var dns = require('dns');
 var db = require('./db.js')
 app.use(bodyParser.json())
-
+PORT  = process.env.PORT || 80 
 app.use('/public', express.static(__dirname + '/public'));
 app.get('/',(req,res)=>{
 
@@ -88,6 +88,6 @@ app.post('/api/shorten',checkSite, async (req,res)=>{
 	
 
 })
-app.listen(process.env.port || 80,()=>{
+app.listen(PORT,()=>{
 	console.log('online')
 })
