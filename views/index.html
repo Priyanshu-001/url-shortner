@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"/> -->
+	  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+	<title>Hi </title>
+</head>
+<body>
+ <div id="app">
+<v-app >
+
+	<v-container  class="d-flex flex-column align-center justify-center pa-5 ">
+
+	<v-app-bar elevate-on-scroll app>
+		<v-toolbar-title><v-icon> mdi-phone </v-icon> Dial_url</v-toolbar-title>
+	</v-app-bar>
+
+	<v-container>
+
+	<v-container  class="d-flex flex-column align-center justify-center pa-5 ">
+		<h1 class="text-h2 align-center strong pt-12">
+			Shortner
+		</h1>
+		<h3 class="text-body1 align-center">
+			Get a 5 digit code for your website
+		</h3>
+	</v-container>
+
+	
+		<v-text-field fluid fill-width solo name="url" v-model="url"  v-on:keyup.enter="submit" outlined label="Url">
+		
+			<v-btn text slot="append" @click="submit">
+				Shorten
+			</v-btn>	
+		
+	</v-text-field>
+
+
+	<p v-if='ready'>
+		website code -> <a :href="shorten_url">{{shorten_url}}</a>
+	</p>
+
+	</v-container>
+
+	<v-container>
+
+		<h2 class="text-h4 align-center strong ">
+			Top Sites
+		</h2>
+		<v-container>
+		<template v-if="!siteReady" v-for="i in 5">
+		<v-skeleton-loader
+          
+          type="list-item-two-line"
+        ></v-skeleton-loader>
+        </template>
+        <template v-if="siteReady" v-for="(site,index) of topSites">
+        	<v-card elevation="8" class="headline" class="py-5">
+        		<v-card-title>
+        		#{{index+1}}:	{{site.link}}
+        		</v-card-title>
+        		<v-card-subtitle>
+        			Hits: {{site.hits}}
+        		</v-card-subtitle>
+        	</v-card>
+        </template>
+    </v-container>
+	</v-container>
+
+</v-container>
+</v-app>
+</div>
+</body>
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script type="text/javascript" src="/public/app.js"> </script>
+</html>
